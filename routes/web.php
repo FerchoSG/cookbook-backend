@@ -13,6 +13,9 @@
 |
 */
 
+$router->get('/', function() use ($router){
+    return 'welcome to cook book api';
+});
 
 $router->group(['prefix' => 'v1/'], function()use ($router){
 
