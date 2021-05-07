@@ -17,7 +17,7 @@ class RecipeService implements ICrud
     }
     public function all()
     {
-        return $this->model->all();
+        return $this->model->all()->toArray();
     }
 
     public function getById(int $id)

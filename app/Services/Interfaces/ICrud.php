@@ -5,7 +5,7 @@ namespace App\Services\Interfaces;
 interface ICrud
 {
     /**
-     * @return array Model
+     * @return array
      */
     public function all();
     /**
