@@ -1,24 +1,37 @@
-# Lumen PHP Framework
+# cookbook api
 
-[![Build Status](https://travis-ci.org/laravel/lumen-framework.svg)](https://travis-ci.org/laravel/lumen-framework)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![Latest Stable Version](https://img.shields.io/packagist/v/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
-[![License](https://img.shields.io/packagist/l/laravel/framework)](https://packagist.org/packages/laravel/lumen-framework)
+## this is basic API Rest using passport authentication 
 
-Laravel Lumen is a stunningly fast PHP micro-framework for building web applications with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Lumen attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as routing, database abstraction, queueing, and caching.
+for the moment the API has only two models since the cookbook stores only recipes and users
 
-## Official Documentation
+## Models
 
-Documentation for the framework can be found on the [Lumen website](https://lumen.laravel.com/docs).
+### users
 
-## Contributing
+| id | name | email | password | created_at | updated_at | 
+| -- |:----:|:-----:|:--------:|:----------:| ----------:|
+|autoincrement | string | string unique | string | timestamp | timestamp |
 
-Thank you for considering contributing to Lumen! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### recipes
 
-## Security Vulnerabilities
+| id | title | description | image | ingredients | user_id | created_at | updated_at | 
+| -- |:-----:|:-----------:|:-----:|:-----------:|:-------:|:----------:| ----------:|
+|autoincrement | string | string | string | string | bigint | timestamp | timestamp |
 
-If you discover a security vulnerability within Lumen, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
 
-## License
+## Routes 
 
-The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+| Method | uri | description |
+| ------ |:---:|:-----------:|
+| POST   | /register                               |*|
+| POST   | /oauth/token                            | login |
+| GET    | /v1/users                               |*|
+| GET    | /v1/users/{id}                          |*|
+| PUT    | /v1/users/{id}                          |*|
+| DELETE | /v1/users/{id}                          |*|
+| GET    | /v1/recipes                             |*|
+| GET    | /v1/recipes/{id}                        |*|
+| POST   | /v1/recipes                             |*|
+| PUT    | /v1/recipes/{id}                        |*| 
+| DELETE | /v1/recipes/{id}                        |*|
+
