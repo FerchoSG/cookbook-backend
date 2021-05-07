@@ -23,8 +23,13 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-$app->withFacades();
+$app = new \Dusterio\LumenPassport\Lumen7Application(
+    dirname(__DIR__)
+);
 
+
+
+$app->withFacades();
 $app->withEloquent();
 
 /*
@@ -60,6 +65,7 @@ $app->singleton(
 */
 
 $app->configure('app');
+$app->configure('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -76,9 +82,9 @@ $app->configure('app');
 //     App\Http\Middleware\ExampleMiddleware::class
 // ]);
 
-// $app->routeMiddleware([
-//     'auth' => App\Http\Middleware\Authenticate::class,
-// ]);
+$app->routeMiddleware([
+    'auth' => App\Http\Middleware\Authenticate::class,
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +101,11 @@ $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
 $app->register(Flipbox\LumenGenerator\LumenGeneratorServiceProvider::class);
+$app->register(Laravel\Passport\PassportServiceProvider::class);
+$app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
+
+\Dusterio\LumenPassport\LumenPassport::routes($app);
+\Dusterio\LumenPassport\LumenPassport::tokensExpireIn(\Carbon\Carbon::now()->addDay(1));
 /*
 |--------------------------------------------------------------------------
 | Load The Application Routes

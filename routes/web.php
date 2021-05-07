@@ -13,16 +13,17 @@
 |
 */
 
-$router->get('/', function() use ($router){
+$router->get('/', function(){
     return 'welcome to cook book api';
 });
 
-$router->group(['prefix' => 'v1/'], function()use ($router){
+$router->post('/register', 'UserController@store');
+
+$router->group(['prefix' => 'v1/', 'middleware' => 'auth'], function() use ($router){
 
     $router->group(['prefix' => 'users'],function() use ($router){
         $router->get('/', 'UserController@index');
         $router->get('/{id}', 'UserController@show');
-        $router->post('/', 'UserController@store');
         $router->put('/{id}', 'UserController@update');
         $router->delete('/{id}', 'UserController@destroy');
     });
