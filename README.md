@@ -22,7 +22,7 @@ for the moment the API has only two models since the cookbook stores only recipe
 ## Routes 
 
 | Method | uri | description |
-| ------ |:---:|:-----------:|
+| ------ |-----|:-----------:|
 | POST   | /register                               |*|
 | POST   | /oauth/token                            | login |
 | GET    | /v1/users                               |*|
