@@ -19,7 +19,7 @@ $router->get('/', function(){
 
 $router->post('/register', 'UserController@store');
 
-$router->group(['prefix' => 'v1/', 'middleware' => 'auth'], function() use ($router){
+$router->group(['prefix' => 'v1/'], function() use ($router){
 
     $router->group(['prefix' => 'users'],function() use ($router){
         $router->get('/', 'UserController@index');
