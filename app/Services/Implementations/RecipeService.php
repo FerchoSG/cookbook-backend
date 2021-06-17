@@ -15,9 +15,9 @@ class RecipeService implements ICrud
     public function __construct(Recipe $model) {
         $this->model = $model;
     }
-    public function all()
+    public function all(int $UserId)
     {
-        return $this->model->all()->toArray();
+        return $this->model->where('user_id', $UserId)->get()->toArray();
     }
 
     public function getById(int $id)

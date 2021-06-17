@@ -22,15 +22,15 @@ class Recipe extends Model
         return $this->belongsTo(User::class);
     }
 
-    // public function toArray()
-    // {
-    //     return [
-    //         'id' => $this->id,
-    //         'title' => $this->title,
-    //         'description'   => $this->description,
-    //         'image' => $this->image,
-    //         'ingredients'   => json_decode($this->ingredients),
-    //         'user_id'   => $this->user_id,
-    //     ];
-    // }
+    public function toArray()
+    {
+        return [
+            'id'            => $this->id,
+            'title'         => $this->title,
+            'description'   => $this->description,
+            'image'         => $this->image,
+            'ingredients'   => json_decode($this->ingredients),
+            'user_id'       => $this->user_id,
+        ];
+    }
 }

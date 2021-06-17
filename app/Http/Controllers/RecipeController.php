@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Services\Implementations\RecipeService;
 use App\Validator\RecipeValidator;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
+use Illuminate\Support\Facades\Auth;
 
 class RecipeController extends Controller
 {
@@ -31,7 +32,8 @@ class RecipeController extends Controller
 
     public function index()
     {
-        return $this->recipeService->all();
+        $currentUser = Auth::user();
+        return $this->recipeService->all($currentUser->id);
     }
 
     public function show($id)

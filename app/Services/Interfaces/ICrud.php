@@ -5,14 +5,16 @@ namespace App\Services\Interfaces;
 interface ICrud
 {
     /**
+     * @param int $UserId
      * @return array
      */
-    public function all();
+    public function all(int $UserId);
     /**
-     * @param int $id
+     * @param int $RecipeId
+     * @param int $UserId
      * @return Model
      */
-    public function getById(int $id);
+    public function getById(int $RecipeId);
     /**
      * @param array $model
      * @return void

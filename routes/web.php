@@ -19,20 +19,20 @@ $router->get('/', function(){
 
 $router->post('/register', 'UserController@store');
 
-$router->group(['prefix' => 'v1/'], function() use ($router){
+$router->group(['prefix' => 'v1/', 'middleware' => 'auth'], function() use ($router){
 
     $router->group(['prefix' => 'users'],function() use ($router){
-        $router->get('/', 'UserController@index');
-        $router->get('/{id}', 'UserController@show');
-        $router->put('/{id}', 'UserController@update');
-        $router->delete('/{id}', 'UserController@destroy');
+        $router->get('/',       'UserController@index');
+        $router->get('/{id}',   'UserController@show');
+        $router->put('/{id}',   'UserController@update');
+        $router->delete('/{id}','UserController@destroy');
     });
 
     $router->group(['prefix' => 'recipes'],function() use ($router){
-        $router->get('/', 'RecipeController@index');
-        $router->get('/{id}', 'RecipeController@show');
-        $router->post('/', 'RecipeController@store');
-        $router->put('/{id}', 'RecipeController@update');
-        $router->delete('/{id}', 'RecipeController@destroy');
+        $router->get('/',       'RecipeController@index');
+        $router->get('/{id}',   'RecipeController@show');
+        $router->post('/',      'RecipeController@store');
+        $router->put('/{id}',   'RecipeController@update');
+        $router->delete('/{id}','RecipeController@destroy');
     });
 });
