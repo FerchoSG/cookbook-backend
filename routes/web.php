@@ -17,9 +17,9 @@ $router->get('/', function(){
     return 'welcome to cook book api';
 });
 
-$router->post('/register', 'UserController@store');
+$router->post('/api/register', 'UserController@store');
 
-$router->group(['prefix' => 'v1/', 'middleware' => 'auth'], function() use ($router){
+$router->group(['prefix' => 'api/', 'middleware' => 'auth'], function() use ($router){
 
     $router->group(['prefix' => 'users'],function() use ($router){
         $router->get('/',       'UserController@index');

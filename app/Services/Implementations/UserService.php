@@ -4,9 +4,9 @@ namespace App\Services\Implementations;
 
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
-use App\Services\Interfaces\ICrud;
+use App\Services\Interfaces\IUserService;
 
-class UserService implements ICrud
+class UserService implements IUserService
 {
     /**
      * @var User
@@ -30,7 +30,7 @@ class UserService implements ICrud
     public function create($user)
     {
         $user['password'] = Hash::make($user['password']);
-        $this->model->create($user);
+        return $this->model->create($user);
     }
 
     public function update(array $user, int $id)

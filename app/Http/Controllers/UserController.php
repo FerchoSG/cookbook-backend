@@ -45,12 +45,19 @@ class UserController extends Controller
 
         if($validator->fails()){
             $response = response([
-                "status" => 422,
-                "message" => "Error",
-                "errors" => $validator->errors()
+                "status"    => 422,
+                "message"   => "Error",
+                "errors"    => $validator->errors()
             ], 422);
         }else{
-            $this->userService->create($this->request->all());
+            $user = $this->userService->create($this->request->all());
+
+            $response = response([
+                "status"    => 201,
+                "message"   => "User created",
+                "errors"    => false,
+                "token"     => $user->createToken('register')->accessToken,
+            ], 201);
         }
 
         return $response;
@@ -64,17 +71,17 @@ class UserController extends Controller
 
         if($validator->fails()){
             $response = response([
-                "status" => 422,
-                "message" => "Error",
-                "errors" => $validator->errors()
+                "status"    => 422,
+                "message"   => "Error",
+                "errors"    => $validator->errors()
             ], 422);
         }else{
             $data = $this->userService->update($this->request->all(), $id);
             if($data == null)
                 $response = response([
-                    "status" => 404,
-                    "message" => "Error",
-                    "errors" => "user not found"
+                    "status"    => 404,
+                    "message"   => "Error",
+                    "errors"    => "user not found"
                 ], 404);
         }
 

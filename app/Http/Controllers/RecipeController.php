@@ -44,12 +44,15 @@ class RecipeController extends Controller
     public function store()
     {
         $response = response("",201);
-        $uploadedFileUrl = false;
+        $path = '';
         if($this->request->hasFile('file')){
-            $uploadedFileUrl = Cloudinary::upload($this->request->file('file')->getRealPath());
+            $fileExt = $this->request->file('file')->getClientOriginalExtension();
+            $fileName = uniqid().'.'.$fileExt;
+            $path = storage_path('images/');
+            $this->request->file('file')->move($path, $fileName);
+            $this->request['image'] = $path . $fileName;
         }
 
-        $this->request['image'] = $uploadedFileUrl ? $uploadedFileUrl->getSecurePath() :'';
         $validator = $this->recipeValidator->validate();
 
         if($validator->fails()){

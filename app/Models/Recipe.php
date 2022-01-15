@@ -29,7 +29,7 @@ class Recipe extends Model
             'title'         => $this->title,
             'description'   => $this->description,
             'image'         => $this->image,
-            'ingredients'   => json_decode($this->ingredients),
+            'ingredients'   => json_decode(json_decode($this->ingredients)),
             'user_id'       => $this->user_id,
         ];
     }

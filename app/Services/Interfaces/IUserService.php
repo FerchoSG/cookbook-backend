@@ -10,6 +10,7 @@ interface IUserService
      * @return array User
      */
     public function all();
+
     /**
      * @param int $id
      * @return User
@@ -17,7 +18,7 @@ interface IUserService
     public function getById(int $id);
     /**
      * @param array $user
-     * @return void
+     * @return object
      */
     public function create($user);
     /**

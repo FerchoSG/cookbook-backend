@@ -32,6 +32,9 @@ class UserValidator
 
     private function messages()
     {
-        return [];
+        return [
+            "unique" => "The :attribute has already been taken.",
+            "required" => "The :attribute is required.",
+        ];
     }
 }

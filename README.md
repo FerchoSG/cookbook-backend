@@ -25,13 +25,23 @@ for the moment the API has only two models since the cookbook stores only recipe
 | ------ |-----|:-----------:|
 | POST   | /register                               |*|
 | POST   | /oauth/token                            | login |
-| GET    | /v1/users                               |*|
-| GET    | /v1/users/{id}                          |*|
-| PUT    | /v1/users/{id}                          |*|
-| DELETE | /v1/users/{id}                          |*|
-| GET    | /v1/recipes                             |*|
-| GET    | /v1/recipes/{id}                        |*|
-| POST   | /v1/recipes                             |*|
-| PUT    | /v1/recipes/{id}                        |*| 
-| DELETE | /v1/recipes/{id}                        |*|
+| GET    | /api/users                               |*|
+| GET    | /api/users/{id}                          |*|
+| PUT    | /api/users/{id}                          |*|
+| DELETE | /api/users/{id}                          |*|
+| GET    | /api/recipes                             |*|
+| GET    | /api/recipes/{id}                        |*|
+| POST   | /api/recipes                             |*|
+| PUT    | /api/recipes/{id}                        |*| 
+| DELETE | /api/recipes/{id}                        |*|
 
+---
+login request format
+```json
+    "grant_type": "",
+    "client_id": "",
+    "client_secret": "",
+    "password": "",
+    "username": "",
+    "scope": ""
+```
